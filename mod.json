@@ -1,0 +1,94 @@
+{
+	"geode": "5.7.1",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "antimatter.seed-master",
+	"name": "Seed Master",
+	"version": "v1.0.0",
+	"developer": "AntiMatter",
+	"description": "Tools for RNG manipulation",
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0"
+	},
+	"resources": {
+		"sprites": [
+			"resources/*.png"
+		]
+	},
+	"tags": ["gameplay", "cheat", "offline"],
+	"settings": {
+		"force-seed": {
+			"name": "Force Seed",
+			"description": "Forces a specific random seed",
+			"type": "bool",
+			"default": false
+		},
+		"seed": {
+			"name": "Seed",
+			"description": "The random seed to be forced at the start of every attempt. If it exceeds 18,446,744,073,709,551,615 the value will be set to 0",
+			"type": "string",
+			"default": "0",
+			"match": "^[0-9]{1,20}$"
+		},
+		"consistent-checkpoint-seed": {
+			"name": "Consistent Checkpoint Seed",
+			"description": "If Force Seed and this option are enabled, the seed value forced at checkpoints will be the same value as when the checkpoint was created/activated, not the seed value at the start of the attempt",
+			"type": "bool",
+			"default": true
+		},
+		"show-seed": {
+			"name": "Show Seed",
+			"description": "Displays your current seed during gameplay",
+			"type": "bool",
+			"default": false
+		},
+		"show-starting-seed": {
+			"name": "Show Starting Seed",
+			"description": "Displays the seed at the start of the current attempt, as well as the seed at the start of the current checkpoint (if applicable)",
+			"type": "bool",
+			"default": false
+		},
+		"label-scale": {
+			"name": "Label Scale",
+			"description": "The scale of the seed label",
+			"default": 0.5,
+			"min": 0.1,
+			"type": "float",
+			"control": {
+				"arrows": true,
+				"arrow-step": 0.1
+			}
+		},
+		"label-opacity": {
+			"name": "Label Opacity",
+			"description": "The opacity of the seed label",
+			"default": 255,
+			"min": 0,
+			"max": 255,
+			"type": "int",
+			"control": {
+				"arrows": true,
+				"arrow-step": 1,
+				"slider": true,
+				"slider-step": 5
+			}
+		},
+		"seed-generation": {
+			"name": "Seed Generation",
+			"description": "Change the way seeds are generated.\n\n\"Unchanged\" makes the seed generation unaffected.\n\n\"Vanilla\" forces the seed generation to be the same as in the unmodified game, overriding Silicate's behavior of generating 64-bit seeds.\n\n\"Vanilla (64-bit)\" uses the same algorithm as vanilla, but stored as a 64-bit number.\n\n\"Geode\" uses the RNG util in Geode to generate the seed.",
+			"type": "string",
+			"one-of": ["Unchanged", "Vanilla", "Vanilla (64-bit)", "Geode"],
+			"default": "Vanilla"
+		},
+		"hide-settings-button": {
+			"name": "Hide Settings Button",
+			"description": "Hides the settings button from the pause menu (not sure why you would enable this...)",
+			"type": "bool",
+			"default": false
+		}
+	}
+}
