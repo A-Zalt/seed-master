@@ -8,7 +8,7 @@
 	},
 	"id": "antimatter.seed-master",
 	"name": "Seed Master",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "AntiMatter",
 	"description": "Tools for RNG manipulation",
 	"dependencies": {
