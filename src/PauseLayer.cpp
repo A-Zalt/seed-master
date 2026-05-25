@@ -14,15 +14,16 @@ class $modify(SMPauseLayer, PauseLayer) {
         PauseLayer::customSetup();
         if (!Mod::get()->getSettingValue<bool>("hide-settings-button")) {
             auto winSize = CCDirector::sharedDirector()->getWinSize();
-            auto spr = CCSprite::create("seedButton.png"_spr);
-            spr->setScale(0.75);
-            auto button = CCMenuItemSpriteExtra::create(spr, this, menu_selector(SMPauseLayer::onModSettings));
-            auto menu = CCMenu::create();
-            addChild(menu);
-            menu->setPosition({0, 0});
+            auto sprite = CCSprite::create();
+            auto circleSprite = CircleButtonSprite::createWithSprite("seed.png"_spr, 0.9, CircleBaseColor::Green, CircleBaseSize::MediumAlt);
+            circleSprite->setScale(0.75f);
+            sprite->setScale(0.9f);
+            auto button = CCMenuItemSpriteExtra::create(circleSprite, this, menu_selector(SMPauseLayer::onModSettings));
+            auto menu = getChildByID("left-button-menu");
             menu->addChild(button);
-            menu->setID("settings-menu"_spr);
+            button->setID("settings-button"_spr);
             button->setPosition({50, 50});
+            menu->updateLayout();
         }
     }
 };

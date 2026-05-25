@@ -23,8 +23,11 @@ $on_mod(Loaded) {
     listenForSettingChanges<bool>("hide-settings-button", [](bool value) {
         auto layer = CCScene::get()->getChildByType<PauseLayer>(0);
         if (!layer) return;
-        auto menu = layer->getChildByID("settings-menu"_spr);
+        auto menu = layer->getChildByID("left-button-menu");
         if (!menu) return;
-        menu->setVisible(!value);
+        auto btn = menu->getChildByID("settings-button"_spr);
+        if (!btn) return;
+        btn->setVisible(!value);
+        menu->updateLayout();
     });
 }
